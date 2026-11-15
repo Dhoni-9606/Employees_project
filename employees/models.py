@@ -6,11 +6,11 @@ class Department(models.Model):
     location = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
-
+        return f"{self.name} - {self.location}"
+    
 class Employee(models.Model):
-    last_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     designation = models.CharField(max_length=100)
     salary=models.IntegerField()
@@ -20,4 +20,7 @@ class Employee(models.Model):
     manager = models.ForeignKey('self', on_delete=models.SET_NULL,blank=True, null=True,)
 
     def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def full_name(self):
         return f"{self.first_name} {self.last_name}"
