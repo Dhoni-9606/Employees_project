@@ -2,10 +2,13 @@
 
 from django.http import HttpResponse
 from employees.models import Employee
+from django.shortcuts import render
 
 def home (request):
     #fetching a data from DB
     employees = Employee.objects.all()
-    print(employees)
+    context = {
+        'employees': employees
+    }
 
-    return HttpResponse(employees)
+    return render(request,'home.html', context)
