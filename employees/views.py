@@ -9,4 +9,8 @@ def employee_detail(request,id):
     }
     return render(request, 'employee_detail.html',context)
 
+
+def add_employee(request):
+       return render(request, 'add_employee.html')
+
 # Create your views here.
