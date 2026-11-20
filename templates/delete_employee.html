@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Employee Directory</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h2>delete Employee -- tech with dhoni</h2>
+     <form action="{% url 'delete_employee' employee.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Are you sure you want to delete {{ employee.full_name }}?</p>
+        <button type="submit" onclick="return confirm('are you sure want to delete this employee?')"> Delete Here</button>
+        <i class="fa fa-trash"></i>
+    </form>
+</body>
+</html>

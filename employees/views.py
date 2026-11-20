@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from .models import Employee
 from .forms import EmployeeForm
 
@@ -39,4 +39,17 @@ def edit_employee(request, id):
         'employee': employee,
     }
     return render(request, 'edit_employee.html', context)
+
+
+
+def delete_employee(request, id):
+    employee = get_object_or_404(Employee, id=id)
+    if request.method == 'POST':
+        employee.delete()
+        return redirect('home')  # Redirect to the home page after deletion
+        # Redirect to a success page or the employee list page
+    context = {
+        'employee': employee,
+    }
+    return render(request, 'delete_employee.html', context)
 
