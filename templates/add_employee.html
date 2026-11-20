@@ -10,7 +10,10 @@
 </head>
 <body>
     <h2>Add Employee -- tech with dhoni</h2>
-
- 
+     <form action="{% url 'add_employee' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">submit here</button>
+    </form>
 </body>
 </html>
