@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    {% if not user.is_authenticated %}
+    <a href="{% url 'register' %}" >Register</a>&emsp;
+    <a href="{% url 'login' %}">Login</a>
+    {% else %}
+    your are logged in as {{ user.username }} 
+    <a href="{% url 'logout' %}">logout</a> 
+    {% endif %}  
+    
+    
+    
+
     <h2>Employee Directory -- tech with Dhoni</h2>
     <a href="{% url 'add_employee' %}" style="float: right;margin-right: 200px;"><button class="add-employee-btn">Add Employee</button></a>
     <br><br>

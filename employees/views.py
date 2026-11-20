@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Employee
 from .forms import EmployeeForm
+from django.contrib.auth.decorators import login_required
 
 def employee_detail(request,id):
     # Your view logic here
@@ -10,7 +11,7 @@ def employee_detail(request,id):
     }
     return render(request, 'employee_detail.html',context)
 
-
+@login_required
 def add_employee(request):
        if request.method == 'POST':
            form = EmployeeForm(request.POST,request.FILES)
