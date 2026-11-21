@@ -21,7 +21,10 @@
     
 
     <h2>Employee Directory -- tech with Dhoni</h2>
+
+    {% if perms.employee.add_employee %}
     <a href="{% url 'add_employee' %}" style="float: right;margin-right: 200px;"><button class="add-employee-btn">Add Employee</button></a>
+    {% endif %}
     <br><br>
 <table>
     <thead>
